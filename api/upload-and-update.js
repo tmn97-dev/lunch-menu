@@ -1,7 +1,8 @@
 /**
  * Vercel serverless API: upload menu image → AI interprets → commit & push to GitHub.
  * POST body: JSON { image: "data:image/jpeg;base64,..." }
- * Env: OPENAI_API_KEY, GITHUB_TOKEN, GITHUB_REPO (e.g. "owner/repo")
+ * Env: GEMINI_API_KEY, GITHUB_TOKEN, GITHUB_REPO (e.g. "owner/repo")
+ * Uses Google Gemini (free tier) for vision.
  */
 
 const SYSTEM_PROMPT = `You are a precise assistant. You extract a weekly lunch menu from a photo and return ONLY valid JSON, no markdown or explanation.
@@ -38,18 +39,14 @@ export default async function handler(req, res) {
     return;
   }
 
-  const openaiKey = process.env.OPENAI_API_KEY;
+  const geminiKey = process.env.GEMINI_API_KEY;
   const githubToken = process.env.GITHUB_TOKEN;
   const githubRepo = process.env.GITHUB_REPO;
 
-  console.log(openaiKey ? "OpenAI key loaded" : "OpenAI key missing");
-  console.log(githubToken ? "GitHub token loaded" : "GitHub token missing");
-  console.log(githubRepo ? "GitHub repo loaded" : "GitHub repo missing");
-
-  if (!openaiKey || !githubToken || !githubRepo) {
+  if (!geminiKey || !githubToken || !githubRepo) {
     res.writeHead(500, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({
-      error: "Server misconfigured: OPENAI_API_KEY, GITHUB_TOKEN, GITHUB_REPO required",
+      error: "Server misconfigured: GEMINI_API_KEY, GITHUB_TOKEN, GITHUB_REPO required",
     }));
     return;
   }
@@ -76,49 +73,46 @@ export default async function handler(req, res) {
     return;
   }
 
-  // 1) OpenAI Vision: image → menu JSON
+  // 1) Google Gemini Vision: image → menu JSON (free tier)
   let menuJson;
   try {
-    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${openaiKey}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        max_tokens: 4096,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          {
-            role: "user",
-            content: [
-              {
-                type: "text",
-                text: "Extract the weekly lunch menu from this image. Return only valid JSON matching the schema (week, restaurant, hours, lastUpdated, days with day/date/items). Use Norwegian. Today's date for lastUpdated: " + new Date().toISOString().slice(0, 10),
-              },
-              {
-                type: "image_url",
-                image_url: { url: dataUrl },
-              },
-            ],
-          },
-        ],
-      }),
-    });
+    const dataUrlMatch = dataUrl.match(/^data:(image\/[a-z+]+);base64,(.+)$/i);
+    const mimeType = dataUrlMatch ? dataUrlMatch[1] : "image/jpeg";
+    const base64Data = dataUrlMatch ? dataUrlMatch[2] : dataUrl.replace(/^data:image\/\w+;base64,/, "");
 
-    if (!openaiRes.ok) {
-      const errText = await openaiRes.text();
+    const userPrompt = "Extract the weekly lunch menu from this image. Return only valid JSON matching the schema (week, restaurant, hours, lastUpdated, days with day/date/items). Use Norwegian. Today's date for lastUpdated: " + new Date().toISOString().slice(0, 10);
+
+    const geminiRes = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiKey)}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents: [{
+            parts: [
+              { inline_data: { mime_type: mimeType, data: base64Data } },
+              { text: userPrompt },
+            ],
+          }],
+          generation_config: { max_output_tokens: 4096 },
+        }),
+      }
+    );
+
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
       res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "AI request failed", detail: errText.slice(0, 300) }));
       return;
     }
 
-    const openaiData = await openaiRes.json();
-    const raw = openaiData.choices?.[0]?.message?.content?.trim();
+    const geminiData = await geminiRes.json();
+    const raw = geminiData.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     if (!raw) {
+      const errDetail = geminiData.error?.message || JSON.stringify(geminiData).slice(0, 200);
       res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
-      res.end(JSON.stringify({ error: "Empty AI response" }));
+      res.end(JSON.stringify({ error: "Empty AI response", detail: errDetail }));
       return;
     }
 
