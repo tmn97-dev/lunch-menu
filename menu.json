@@ -1,27 +1,34 @@
 {
   "week": "2026-W09",
   "lastUpdated": "2026-02-23",
+  "hours": "ÅPENT 11-13:00",
   "days": [
     {
       "day": "Mandag",
       "date": "2026-02-23",
       "items": [
         {
-          "name": "Gresskarcurry",
-          "description": "med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
+          "name": "Gresskarcurry med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
+          "description": "",
           "tags": [
             "vegetar"
           ],
-          "price": ""
+          "price": "",
+          "allergies": [
+            "gluten",
+            "nøtter",
+            "melk"
+          ]
         },
         {
           "name": "Erter og spinatsuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
-          "price": ""
+          "price": "",
+          "allergies": []
         }
       ]
     },
@@ -30,23 +37,29 @@
       "date": "2026-02-24",
       "items": [
         {
-          "name": "Piggvar, kyllingveloutè",
-          "description": "med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
+          "name": "Piggvar, kyllingveloutè med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
+          "description": "",
           "tags": [
             "fisk",
-            "sjømat",
-            "kylling"
+            "skalldyr"
           ],
-          "price": ""
+          "price": "",
+          "allergies": [
+            "fisk",
+            "skalldyr",
+            "melk",
+            "gluten"
+          ]
         },
         {
           "name": "Søtpotetsuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
-          "price": ""
+          "price": "",
+          "allergies": []
         }
       ]
     },
@@ -55,21 +68,29 @@
       "date": "2026-02-25",
       "items": [
         {
-          "name": "Crispy tonkotsu på indrefilet av svin",
-          "description": "med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
+          "name": "Crispy tonkotsu på indrefilet av svin med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
+          "description": "",
           "tags": [
             "svin"
           ],
-          "price": ""
+          "price": "",
+          "allergies": [
+            "svin",
+            "gluten",
+            "egg",
+            "soya",
+            "sesam"
+          ]
         },
         {
           "name": "Maissuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
-          "price": ""
+          "price": "",
+          "allergies": []
         }
       ]
     },
@@ -78,21 +99,27 @@
       "date": "2026-02-26",
       "items": [
         {
-          "name": "Lysing",
-          "description": "med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat, og syltet squash.",
+          "name": "Lysing med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat, og syltet squash.",
+          "description": "",
           "tags": [
             "fisk"
           ],
-          "price": ""
+          "price": "",
+          "allergies": [
+            "fisk",
+            "egg",
+            "sennep"
+          ]
         },
         {
           "name": "Blomkålsuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
-          "price": ""
+          "price": "",
+          "allergies": []
         }
       ]
     },
@@ -101,10 +128,16 @@
       "date": "2026-02-27",
       "items": [
         {
-          "name": "Norsk taco",
-          "description": "med klassisk tilbehør.",
-          "tags": [],
-          "price": ""
+          "name": "Norsk taco med klassisk tilbehør.",
+          "description": "",
+          "tags": [
+            "kjøtt"
+          ],
+          "price": "",
+          "allergies": [
+            "gluten",
+            "melk"
+          ]
         }
       ]
     }
