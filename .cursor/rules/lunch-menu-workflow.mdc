@@ -33,7 +33,8 @@ Write the extracted data to `menu.json` in the project root. Follow this exact s
         {
           "name": "Dish Name",
           "description": "Full description from the menu",
-          "tags": ["vegetarian"],
+          "tags": ["vegetar"],
+          "allergies": ["gluten", "melk"],
           "price": ""
         }
       ]
@@ -48,7 +49,8 @@ Write the extracted data to `menu.json` in the project root. Follow this exact s
 - **lastUpdated**: today's date in `YYYY-MM-DD`
 - **days**: always Mon–Fri (`Mandag` through `Fredag`), with correct `date` values for that week
 - **items**: each dish is a separate item; soups are listed as their own item
-- **tags**: infer from ingredients — e.g. `vegetarian`, `fisk`, `svin`, `kylling`, `suppe`, `vegan`, `gluten-free`
+- **tags**: infer from ingredients — e.g. `vegetar`, `fisk`, `svin`, `kylling`, `suppe`, `vegan`, `gluten-free`
+- **allergies**: infer from dish name and description; array of strings, e.g. `gluten`, `melk`, `egg`, `nøtter`, `sesam`, `skalldyr`, `fisk`, `soya`, `sennep`, `selleri`; use `[]` if none evident
 - **price**: include if visible on the menu, otherwise leave as `""`
 - **description**: copy the full text from the menu for each dish; leave empty `""` for soups unless extra detail is given
 

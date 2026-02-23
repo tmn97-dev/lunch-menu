@@ -11,7 +11,8 @@ Rules:
 - Dates must be YYYY-MM-DD for the correct week.
 - week: ISO week like 2026-W09.
 - lastUpdated: use today's date in YYYY-MM-DD.
-- Each day has items: name, description (optional), tags (array, e.g. vegetarian, fisk, suppe, svin), price (string, can be "").
+- Each day has items with: name, description (optional), tags (array, e.g. vegetar, fisk, suppe, svin), price (string, can be ""), and allergies (array of strings).
+- For each dish, infer allergies/allergens from the dish name and description (ingredients). Use Norwegian or standard terms, e.g.: gluten, melk, egg, nøtter, mandler, sesam, skalldyr, fisk, soya, sennep, selleri, lupin. Only include allergies you can reasonably infer from the text; use an empty array [] if none are evident.
 - Return exactly the JSON object, no code block or extra text.`;
 
 function corsHeaders(origin) {
