@@ -190,6 +190,69 @@
       margin-top: 2rem;
     }
 
+    .upload-section {
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .upload-section h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .upload-section p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .upload-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .upload-row input[type="file"] {
+      font-size: 0.875rem;
+      max-width: 100%;
+    }
+
+    .upload-row button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+
+    .upload-row button:hover {
+      filter: brightness(1.05);
+    }
+
+    .upload-row button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .upload-status {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      min-height: 1.5em;
+    }
+
+    .upload-status.success { color: var(--tag-text); }
+    .upload-status.error { color: #dc2626; }
+
     @media (max-width: 480px) {
       .container { padding: 1.25rem 1rem 3rem; }
       header h1 { font-size: 1.4rem; }
@@ -208,6 +271,15 @@
       </div>
       <div class="meta" id="updated"></div>
     </header>
+    <section class="upload-section" id="upload-section">
+      <h2>Oppdater meny fra bilde</h2>
+      <p>Last opp et bilde av ukens lunsjmeny. Et AI-verktøy tolker bildet og oppdaterer menyen i repoet (commit og push).</p>
+      <div class="upload-row">
+        <input type="file" id="menu-file" accept="image/*" />
+        <button type="button" id="upload-btn" disabled>Last opp og oppdater</button>
+      </div>
+      <div class="upload-status" id="upload-status" aria-live="polite"></div>
+    </section>
     <main id="content">
       <div class="loading">
         <div class="spinner"></div>
@@ -219,6 +291,57 @@
 
   <script>
     const TODAY = new Date().toISOString().slice(0, 10);
+    const API_BASE = window.LUNCH_MENU_API || "";
+
+    const menuFile = document.getElementById("menu-file");
+    const uploadBtn = document.getElementById("upload-btn");
+    const uploadStatus = document.getElementById("upload-status");
+
+    function setUploadStatus(msg, type) {
+      uploadStatus.textContent = msg;
+      uploadStatus.className = "upload-status" + (type ? " " + type : "");
+    }
+
+    menuFile.addEventListener("change", function () {
+      uploadBtn.disabled = !this.files || this.files.length === 0;
+    });
+
+    uploadBtn.addEventListener("click", async function () {
+      const file = menuFile.files && menuFile.files[0];
+      if (!file || !file.type.startsWith("image/")) {
+        setUploadStatus("Velg et bilde.", "error");
+        return;
+      }
+      uploadBtn.disabled = true;
+      setUploadStatus("Tolker bildet og oppdaterer meny…");
+      try {
+        const dataUrl = await new Promise((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.onerror = reject;
+          r.readAsDataURL(file);
+        });
+        const res = await fetch(API_BASE + "/api/upload-and-update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: dataUrl }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          setUploadStatus(data.error || "Noe gikk galt (" + res.status + ").", "error");
+          if (data.detail) uploadStatus.appendChild(document.createTextNode(" " + data.detail));
+          uploadBtn.disabled = false;
+          return;
+        }
+        setUploadStatus("Menyen er oppdatert og pushet til repo.", "success");
+        menuFile.value = "";
+        uploadBtn.disabled = true;
+        loadMenu();
+      } catch (err) {
+        setUploadStatus("Feil: " + (err.message || "nettverksfeil"), "error");
+        uploadBtn.disabled = false;
+      }
+    });
 
     async function loadMenu() {
       const content = document.getElementById("content");

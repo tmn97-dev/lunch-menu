@@ -1,0 +1,76 @@
+---
+description: Lunch menu update workflow — when user shares a photo of a lunch menu, parse it and update menu.json
+alwaysApply: true
+---
+
+# Lunch Menu Update Workflow
+
+When the user shares a **photo of a weekly lunch menu**, follow these steps:
+
+## 1. Read the image
+
+Extract all information from the menu photo:
+- **Week number** (e.g. "Uke 9" → "2026-W09")
+- **Each day's dishes**: name, full description, and any dietary info
+
+The menu is typically in **Norwegian**. Keep all dish names and descriptions in Norwegian.
+
+## 2. Update menu.json
+
+Write the extracted data to `menu.json` in the project root. Follow this exact schema:
+
+```json
+{
+  "week": "2026-W09",
+  "restaurant": "DM",
+  "hours": "11:00 – 13:00",
+  "lastUpdated": "2026-02-23",
+  "days": [
+    {
+      "day": "Mandag",
+      "date": "2026-02-23",
+      "items": [
+        {
+          "name": "Dish Name",
+          "description": "Full description from the menu",
+          "tags": ["vegetarian"],
+          "price": ""
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Rules for the JSON
+
+- **week**: ISO week format `YYYY-Wxx` — derive from the week number on the menu photo and the current year
+- **lastUpdated**: today's date in `YYYY-MM-DD`
+- **days**: always Mon–Fri (`Mandag` through `Fredag`), with correct `date` values for that week
+- **items**: each dish is a separate item; soups are listed as their own item
+- **tags**: infer from ingredients — e.g. `vegetarian`, `fisk`, `svin`, `kylling`, `suppe`, `vegan`, `gluten-free`
+- **price**: include if visible on the menu, otherwise leave as `""`
+- **description**: copy the full text from the menu for each dish; leave empty `""` for soups unless extra detail is given
+
+## 3. Calculate correct dates
+
+Given a week number (e.g. Uke 9) and the current year:
+- Monday = the first day of that ISO week
+- Tuesday = Monday + 1 day
+- etc. through Friday
+
+## 4. After updating
+
+Tell the user the menu has been updated and remind them to commit and push:
+
+```
+git add menu.json && git commit -m "Update menu for Uke X" && git push origin main
+```
+
+## Important
+
+- Do NOT modify `index.html` unless the user asks
+- Do NOT change the JSON schema/structure
+- Keep everything in Norwegian
+- If a day has no food listed (e.g. holiday), set `"items": []`
+- If the menu has a main dish + a soup for a day, list them as two separate items
