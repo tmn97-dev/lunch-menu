@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukens Lunsjmeny</title>
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --card: #ffffff;
+      --accent: #e85d26;
+      --accent-light: #fff0eb;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --tag-bg: #f0fdf4;
+      --tag-text: #166534;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .meta .week-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-left: 0.35rem;
+    }
+
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .day-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .day-card.today {
+      border-left: 4px solid var(--accent);
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .day-name {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    .day-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .menu-item {
+      padding: 0.6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .menu-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .item-price {
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .empty-day {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    .error-msg {
+      text-align: center;
+      color: #dc2626;
+      padding: 3rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    .loading {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 3rem 1rem;
+    }
+
+    .loading .spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-bottom: 0.75rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 1.25rem 1rem 3rem; }
+      header h1 { font-size: 1.4rem; }
+      .day-card { padding: 1rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="title">Ukens Lunsjmeny</h1>
+      <div class="meta">
+        <span id="restaurant"></span>
+        <span id="week-badge"></span>
+        <span id="hours"></span>
+      </div>
+      <div class="meta" id="updated"></div>
+    </header>
+    <main id="content">
+      <div class="loading">
+        <div class="spinner"></div>
+        <div>Laster meny&hellip;</div>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+  </div>
+
+  <script>
+    const TODAY = new Date().toISOString().slice(0, 10);
+
+    async function loadMenu() {
+      const content = document.getElementById("content");
+      try {
+        const resp = await fetch("menu.json?" + Date.now());
+        if (!resp.ok) throw new Error("Could not load menu.json");
+        const data = await resp.json();
+        render(data);
+      } catch (err) {
+        content.innerHTML = `<div class="error-msg">Kunne ikke laste menyen. Sjekk at <code>menu.json</code> finnes.</div>`;
+      }
+    }
+
+    const DAY_MAP = {
+      "mandag": 1, "tirsdag": 2, "onsdag": 3, "torsdag": 4, "fredag": 5
+    };
+
+    function render(data) {
+      document.getElementById("restaurant").textContent = data.restaurant || "";
+      if (data.week) {
+        document.getElementById("week-badge").innerHTML = `<span class="week-badge">Uke ${data.week.split("-W")[1]}</span>`;
+      }
+      if (data.hours) {
+        document.getElementById("hours").textContent = " · Åpent " + data.hours;
+      }
+      if (data.lastUpdated) {
+        document.getElementById("updated").textContent = "Oppdatert " + formatDate(data.lastUpdated);
+      }
+
+      const content = document.getElementById("content");
+      if (!data.days || data.days.length === 0) {
+        content.innerHTML = `<div class="empty-day">Ingen menydata ennå.</div>`;
+        return;
+      }
+
+      content.innerHTML = data.days.map(day => {
+        const isToday = day.date === TODAY;
+        const items = day.items && day.items.length > 0
+          ? day.items.map(renderItem).join("")
+          : `<div class="empty-day">Ingen meny lagt inn</div>`;
+
+        return `
+          <div class="day-card${isToday ? " today" : ""}">
+            <div class="day-header">
+              <span class="day-name">${day.day}${isToday ? " — i dag" : ""}</span>
+              <span class="day-date">${formatDate(day.date)}</span>
+            </div>
+            ${items}
+          </div>`;
+      }).join("");
+
+      document.getElementById("footer").textContent =
+        `Sist oppdatert: ${data.lastUpdated || "ukjent"}`;
+    }
+
+    function renderItem(item) {
+      const price = item.price ? `<span class="item-price">${item.price}</span>` : "";
+      const desc = item.description ? `<div class="item-desc">${item.description}</div>` : "";
+      const tags = item.tags && item.tags.length > 0
+        ? `<div class="tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>`
+        : "";
+      return `
+        <div class="menu-item">
+          <div class="item-row">
+            <span class="item-name">${item.name}</span>
+            ${price}
+          </div>
+          ${desc}
+          ${tags}
+        </div>`;
+    }
+
+    function formatDate(dateStr) {
+      try {
+        const d = new Date(dateStr + "T00:00:00");
+        return d.toLocaleDateString("nb-NO", { month: "short", day: "numeric" });
+      } catch { return dateStr; }
+    }
+
+    loadMenu();
+  </script>
+</body>
+</html>

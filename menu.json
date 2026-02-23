@@ -1,0 +1,92 @@
+{
+  "week": "2026-W09",
+  "restaurant": "DM",
+  "hours": "11:00 – 13:00",
+  "lastUpdated": "2026-02-23",
+  "days": [
+    {
+      "day": "Mandag",
+      "date": "2026-02-23",
+      "items": [
+        {
+          "name": "Gresskarcurry",
+          "description": "Gresskarcurry med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
+          "tags": ["vegetarian"],
+          "price": ""
+        },
+        {
+          "name": "Erter og spinatsuppe",
+          "description": "",
+          "tags": ["suppe"],
+          "price": ""
+        }
+      ]
+    },
+    {
+      "day": "Tirsdag",
+      "date": "2026-02-24",
+      "items": [
+        {
+          "name": "Piggvar",
+          "description": "Piggvar, kyllingvelouté med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
+          "tags": ["fisk"],
+          "price": ""
+        },
+        {
+          "name": "Søtpotetsuppe",
+          "description": "",
+          "tags": ["suppe"],
+          "price": ""
+        }
+      ]
+    },
+    {
+      "day": "Onsdag",
+      "date": "2026-02-25",
+      "items": [
+        {
+          "name": "Crispy tonkotsu",
+          "description": "Crispy tonkotsu på indrefilet av svin med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
+          "tags": ["svin"],
+          "price": ""
+        },
+        {
+          "name": "Maissuppe",
+          "description": "",
+          "tags": ["suppe"],
+          "price": ""
+        }
+      ]
+    },
+    {
+      "day": "Torsdag",
+      "date": "2026-02-26",
+      "items": [
+        {
+          "name": "Lysing",
+          "description": "Lysing med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat og syltet squash.",
+          "tags": ["fisk"],
+          "price": ""
+        },
+        {
+          "name": "Blomkålsuppe",
+          "description": "",
+          "tags": ["suppe"],
+          "price": ""
+        }
+      ]
+    },
+    {
+      "day": "Fredag",
+      "date": "2026-02-27",
+      "items": [
+        {
+          "name": "«Norsk taco»",
+          "description": "«Norsk taco» med klassisk tilbehør.",
+          "tags": [],
+          "price": ""
+        }
+      ]
+    }
+  ]
+}
