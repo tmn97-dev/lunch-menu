@@ -2,5 +2,8 @@
   "name": "lunch-menu",
   "version": "1.0.0",
   "description": "Weekly lunch menu with upload-to-update",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "vercel": "^50.22.1"
+  }
 }

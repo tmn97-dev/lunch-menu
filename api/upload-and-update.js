@@ -42,6 +42,10 @@ export default async function handler(req, res) {
   const githubToken = process.env.GITHUB_TOKEN;
   const githubRepo = process.env.GITHUB_REPO;
 
+  console.log(openaiKey ? "OpenAI key loaded" : "OpenAI key missing");
+  console.log(githubToken ? "GitHub token loaded" : "GitHub token missing");
+  console.log(githubRepo ? "GitHub repo loaded" : "GitHub repo missing");
+
   if (!openaiKey || !githubToken || !githubRepo) {
     res.writeHead(500, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({
