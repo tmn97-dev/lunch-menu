@@ -1,26 +1,25 @@
 {
-  "week": "2026-W08",
-  "hours": "ÅPENT 11-13:00",
+  "week": "2026-W09",
   "lastUpdated": "2026-02-23",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-02-16",
+      "date": "2026-02-23",
       "items": [
         {
-          "name": "Bowl",
-          "description": "Med kokte linser, hummus med løpstikke, spicy agurk, brokkoli, bakt søtpotet, syltet rødbet og satay dressing.",
+          "name": "Gresskarcurry",
+          "description": "med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
           "tags": [
-            "vegetarian"
+            "vegetar"
           ],
           "price": ""
         },
         {
-          "name": "Soppsuppe",
+          "name": "Erter og spinatsuppe",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetarian"
+            "vegetar",
+            "suppe"
           ],
           "price": ""
         }
@@ -28,22 +27,24 @@
     },
     {
       "day": "Tirsdag",
-      "date": "2026-02-17",
+      "date": "2026-02-24",
       "items": [
         {
-          "name": "Posjert ørret",
-          "description": "Med kokte perlepoteter med dill, agurksalat og rømmesaus.",
+          "name": "Piggvar, kyllingveloutè",
+          "description": "med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
           "tags": [
-            "fisk"
+            "fisk",
+            "sjømat",
+            "kylling"
           ],
           "price": ""
         },
         {
-          "name": "Paprikasuppe",
+          "name": "Søtpotetsuppe",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetarian"
+            "vegetar",
+            "suppe"
           ],
           "price": ""
         }
@@ -51,22 +52,22 @@
     },
     {
       "day": "Onsdag",
-      "date": "2026-02-18",
+      "date": "2026-02-25",
       "items": [
         {
-          "name": "Sweet & sour chicken",
-          "description": "Med ananas, grønnsaker, ris og koriander.",
+          "name": "Crispy tonkotsu på indrefilet av svin",
+          "description": "med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
           "tags": [
-            "kylling"
+            "svin"
           ],
           "price": ""
         },
         {
-          "name": "Pastinakksuppe",
+          "name": "Maissuppe",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetarian"
+            "vegetar",
+            "suppe"
           ],
           "price": ""
         }
@@ -74,23 +75,22 @@
     },
     {
       "day": "Torsdag",
-      "date": "2026-02-19",
+      "date": "2026-02-26",
       "items": [
         {
-          "name": "Hvete",
-          "description": "Med basilikum og hvitbønnepuré, kremet blåskjellsaus, rosenkål, spinat og dillolje.",
+          "name": "Lysing",
+          "description": "med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat, og syltet squash.",
           "tags": [
-            "fisk",
-            "sjømat"
+            "fisk"
           ],
           "price": ""
         },
         {
-          "name": "Gulrot og ingefærsuppe",
+          "name": "Blomkålsuppe",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetarian"
+            "vegetar",
+            "suppe"
           ],
           "price": ""
         }
@@ -98,15 +98,12 @@
     },
     {
       "day": "Fredag",
-      "date": "2026-02-20",
+      "date": "2026-02-27",
       "items": [
         {
-          "name": "Bangers & mash",
-          "description": "Med ramsløkpølser fra Metervare, serveres med potetpuré og sennep og løksjy.",
-          "tags": [
-            "svin",
-            "pølse"
-          ],
+          "name": "Norsk taco",
+          "description": "med klassisk tilbehør.",
+          "tags": [],
           "price": ""
         }
       ]
