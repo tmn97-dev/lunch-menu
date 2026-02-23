@@ -43,6 +43,8 @@ export default async function handler(req, res) {
   const githubToken = process.env.GITHUB_TOKEN;
   const githubRepo = process.env.GITHUB_REPO;
 
+  console.logs("Received request", { method: req.method, origin, geminiKey: !!geminiKey, githubToken: !!githubToken, githubRepo });
+
   if (!geminiKey || !githubToken || !githubRepo) {
     res.writeHead(500, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({
