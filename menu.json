@@ -1,33 +1,144 @@
 {
   "week": "2026-W09",
-  "restaurant": "",
-  "hours": "",
   "lastUpdated": "2026-02-23",
+  "hours": "11:00-13:00",
   "days": [
     {
       "day": "Mandag",
       "date": "2026-02-23",
-      "items": []
+      "items": [
+        {
+          "name": "Gresskarcurry",
+          "description": "med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
+          "tags": [
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": [
+            "nøtter",
+            "gluten",
+            "melk"
+          ]
+        },
+        {
+          "name": "Erter og spinatsuppe",
+          "description": null,
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
     },
     {
       "day": "Tirsdag",
       "date": "2026-02-24",
-      "items": []
+      "items": [
+        {
+          "name": "Piggvar, kyllingveloutè",
+          "description": "med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
+          "tags": [
+            "fisk",
+            "skalldyr"
+          ],
+          "price": "",
+          "allergies": [
+            "fisk",
+            "skalldyr",
+            "gluten",
+            "melk"
+          ]
+        },
+        {
+          "name": "Søtpotetsuppe",
+          "description": null,
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
     },
     {
       "day": "Onsdag",
       "date": "2026-02-25",
-      "items": []
+      "items": [
+        {
+          "name": "Crispy tonkotsu på indrefilet av svin",
+          "description": "med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
+          "tags": [
+            "svin"
+          ],
+          "price": "",
+          "allergies": [
+            "gluten",
+            "egg",
+            "soya",
+            "sesam"
+          ]
+        },
+        {
+          "name": "Maissuppe",
+          "description": null,
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
     },
     {
       "day": "Torsdag",
       "date": "2026-02-26",
-      "items": []
+      "items": [
+        {
+          "name": "Lysing",
+          "description": "med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat, og syltet squash.",
+          "tags": [
+            "fisk"
+          ],
+          "price": "",
+          "allergies": [
+            "fisk",
+            "egg",
+            "sennep"
+          ]
+        },
+        {
+          "name": "Blomkålsuppe",
+          "description": null,
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
     },
     {
       "day": "Fredag",
       "date": "2026-02-27",
-      "items": []
+      "items": [
+        {
+          "name": "Norsk taco",
+          "description": "med klassisk tilbehør.",
+          "tags": [
+            "kjøtt"
+          ],
+          "price": "",
+          "allergies": [
+            "gluten",
+            "melk"
+          ]
+        }
+      ]
     }
   ]
 }
