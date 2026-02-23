@@ -197,6 +197,35 @@
       background: var(--card);
       padding: 1rem 1.5rem;
       box-shadow: var(--shadow);
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+    }
+
+    .upload-section.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 1.5rem;
+      margin-bottom: 0;
+      border: none;
+    }
+
+    .toggle-upload-btn {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .toggle-upload-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
     }
 
     .upload-section h2 {
@@ -271,7 +300,8 @@
       </div>
       <div class="meta" id="updated"></div>
     </header>
-    <section class="upload-section" id="upload-section">
+    <button type="button" class="toggle-upload-btn" id="toggle-upload-btn">📤 Oppdater meny fra bilde</button>
+    <section class="upload-section hidden" id="upload-section">
       <h2>Oppdater meny fra bilde</h2>
       <p>Last opp et bilde av ukens lunsjmeny. Et AI-verktøy tolker bildet og oppdaterer menyen i repoet (commit og push).</p>
       <div class="upload-row">
@@ -296,6 +326,17 @@
     const menuFile = document.getElementById("menu-file");
     const uploadBtn = document.getElementById("upload-btn");
     const uploadStatus = document.getElementById("upload-status");
+    const toggleUploadBtn = document.getElementById("toggle-upload-btn");
+    const uploadSection = document.getElementById("upload-section");
+
+    toggleUploadBtn.addEventListener("click", function () {
+      uploadSection.classList.toggle("hidden");
+      if (uploadSection.classList.contains("hidden")) {
+        toggleUploadBtn.textContent = "📤 Oppdater meny fra bilde";
+      } else {
+        toggleUploadBtn.textContent = "✕ Lukk";
+      }
+    });
 
     function setUploadStatus(msg, type) {
       uploadStatus.textContent = msg;
