@@ -43,8 +43,6 @@ export default async function handler(req, res) {
   const githubToken = process.env.GITHUB_TOKEN;
   const githubRepo = process.env.GITHUB_REPO;
 
-  console.logs("Received request", { method: req.method, origin, geminiKey: !!geminiKey, githubToken: !!githubToken, githubRepo });
-
   if (!geminiKey || !githubToken || !githubRepo) {
     res.writeHead(500, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({
@@ -53,6 +51,7 @@ export default async function handler(req, res) {
     return;
   }
 
+  console.log("[upload-and-update] Env OK, parsing body…");
   let body;
   try {
     body = await new Promise((resolve, reject) => {
@@ -75,6 +74,7 @@ export default async function handler(req, res) {
     return;
   }
 
+  console.log("[upload-and-update] Body OK, calling Gemini…");
   // 1) Google Gemini Vision: image → menu JSON (free tier)
   let menuJson;
   try {
@@ -85,7 +85,7 @@ export default async function handler(req, res) {
     const userPrompt = "Extract the weekly lunch menu from this image. Return only valid JSON matching the schema (week, restaurant, hours, lastUpdated, days with day/date/items). Use Norwegian. Today's date for lastUpdated: " + new Date().toISOString().slice(0, 10);
 
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiKey)}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(geminiKey)}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -104,6 +104,7 @@ export default async function handler(req, res) {
 
     if (!geminiRes.ok) {
       const errText = await geminiRes.text();
+      console.error("[upload-and-update] Gemini error:", geminiRes.status, errText.slice(0, 200));
       res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "AI request failed", detail: errText.slice(0, 300) }));
       return;
@@ -113,6 +114,7 @@ export default async function handler(req, res) {
     const raw = geminiData.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     if (!raw) {
       const errDetail = geminiData.error?.message || JSON.stringify(geminiData).slice(0, 200);
+      console.error("[upload-and-update] Empty AI response:", errDetail);
       res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Empty AI response", detail: errDetail }));
       return;
@@ -120,7 +122,9 @@ export default async function handler(req, res) {
 
     const cleaned = raw.replace(/^```json\s*/i, "").replace(/\s*```\s*$/, "").trim();
     menuJson = JSON.parse(cleaned);
+    console.log("[upload-and-update] Gemini OK, menu parsed");
   } catch (e) {
+    console.error("[upload-and-update] AI parse failed:", e.message, e.stack);
     res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "AI parse failed", detail: e.message }));
     return;
@@ -148,6 +152,7 @@ export default async function handler(req, res) {
     },
   };
 
+  console.log("[upload-and-update] Updating GitHub…");
   const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/menu.json`;
   const getRes = await fetch(getUrl, ghOpt);
   let sha = null;
@@ -172,11 +177,13 @@ export default async function handler(req, res) {
 
   if (!putRes.ok) {
     const errText = await putRes.text();
+    console.error("[upload-and-update] GitHub update failed:", putRes.status, errText.slice(0, 200));
     res.writeHead(502, { ...corsHeaders(origin), "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "GitHub update failed", detail: errText.slice(0, 300) }));
     return;
   }
 
+  console.log("[upload-and-update] Done.");
   res.writeHead(200, { ...corsHeaders(origin), "Content-Type": "application/json" });
   res.end(JSON.stringify({ success: true, message: "Menu updated and pushed" }));
 }
