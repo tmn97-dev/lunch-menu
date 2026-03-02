@@ -1,44 +1,45 @@
 {
-  "week": "2026-W09",
-  "lastUpdated": "2026-02-23",
+  "week": "2026-W10",
+  "restaurant": "DM",
   "hours": "11:00-13:00",
+  "lastUpdated": "2026-03-02",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-02-23",
+      "date": "2026-03-02",
       "items": [
         {
-          "name": "Gresskarcurry",
-          "description": "med bakte tomater, pinjekjerner, couscous, fetaost og koriander.",
+          "name": "Risotto med Eik, Holtefjellost XO, trøffel, løpstikke, stekt og marinert sopp",
+          "description": "",
           "tags": [
             "vegetar"
           ],
           "price": "",
           "allergies": [
-            "nøtter",
-            "gluten",
             "melk"
           ]
         },
         {
-          "name": "Erter og spinatsuppe",
-          "description": null,
+          "name": "Sellerisuppe",
+          "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "selleri"
+          ]
         }
       ]
     },
     {
       "day": "Tirsdag",
-      "date": "2026-02-24",
+      "date": "2026-03-03",
       "items": [
         {
-          "name": "Piggvar, kyllingveloutè",
-          "description": "med blåskjell og gressløk, marinerte aspargesbønner og bakte jordskokk.",
+          "name": "Skrei med brent spisskål, sellerirotpurè, marinerte aspargesbønner, piggvar og reke saus",
+          "description": "",
           "tags": [
             "fisk",
             "skalldyr"
@@ -46,32 +47,34 @@
           "price": "",
           "allergies": [
             "fisk",
-            "skalldyr",
-            "gluten",
-            "melk"
+            "selleri",
+            "skalldyr"
           ]
         },
         {
-          "name": "Søtpotetsuppe",
-          "description": null,
+          "name": "Blomkålsuppe",
+          "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk"
+          ]
         }
       ]
     },
     {
       "day": "Onsdag",
-      "date": "2026-02-25",
+      "date": "2026-03-04",
       "items": [
         {
-          "name": "Crispy tonkotsu på indrefilet av svin",
-          "description": "med ris, hoisinsauce, marinert pac-choy, stekt østerssopp og ristet sesam.",
+          "name": "Wok med egg-nudler, marinert indrefilet av svin fra Spikkerud gård, marinerte grønnsaker, hoisin og kyllingsaus reduksjon",
+          "description": "",
           "tags": [
-            "svin"
+            "svin",
+            "kylling"
           ],
           "price": "",
           "allergies": [
@@ -83,23 +86,25 @@
         },
         {
           "name": "Maissuppe",
-          "description": null,
+          "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk"
+          ]
         }
       ]
     },
     {
       "day": "Torsdag",
-      "date": "2026-02-26",
+      "date": "2026-03-05",
       "items": [
         {
-          "name": "Lysing",
-          "description": "med hjemmelaget remulade, bakte rotgrønnsaker, marinert spinat, og syltet squash.",
+          "name": "Rødspette med marinerte dill poteter, pepperrotkrem, tørket eggeplomme, kapers, fennikel og urtesalat",
+          "description": "",
           "tags": [
             "fisk"
           ],
@@ -107,12 +112,12 @@
           "allergies": [
             "fisk",
             "egg",
-            "sennep"
+            "melk"
           ]
         },
         {
-          "name": "Blomkålsuppe",
-          "description": null,
+          "name": "Tomatsuppe",
+          "description": "",
           "tags": [
             "suppe",
             "vegetar"
@@ -124,18 +129,19 @@
     },
     {
       "day": "Fredag",
-      "date": "2026-02-27",
+      "date": "2026-03-06",
       "items": [
         {
-          "name": "Norsk taco",
-          "description": "med klassisk tilbehør.",
+          "name": "Kjøttkaker med brun saus, syltet agurk, potetpurè, rørte tyttebær og bakte rotgrønnsaker",
+          "description": "",
           "tags": [
             "kjøtt"
           ],
           "price": "",
           "allergies": [
             "gluten",
-            "melk"
+            "melk",
+            "egg"
           ]
         }
       ]
