@@ -1,26 +1,29 @@
 {
-  "week": "2026-W11",
-  "hours": "ÅPENT 11-13:00",
-  "lastUpdated": "2026-03-09",
+  "week": "2026-W12",
+  "restaurant": "Ukjent restaurant",
+  "hours": "11-13:00",
+  "lastUpdated": "2026-03-16",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-03-09",
+      "date": "2026-03-16",
       "items": [
         {
-          "name": "Pasta alla Norma",
-          "description": "Med bakt aubergine, marinerte småtomater, chili, modnet parmesan og pomodorosauce.",
+          "name": "Bryani med rosiner",
+          "description": "mandler, bakt søtpotet, ris, mynte og yoghurt dressing.",
           "tags": [
-            "vegetar"
+            "vegetar",
+            "indisk"
           ],
           "price": "",
           "allergies": [
-            "gluten",
+            "nøtter",
+            "mandler",
             "melk"
           ]
         },
         {
-          "name": "Brokkoli og spinatsuppe",
+          "name": "Gulrotsuppe",
           "description": null,
           "tags": [
             "suppe",
@@ -33,11 +36,11 @@
     },
     {
       "day": "Tirsdag",
-      "date": "2026-03-10",
+      "date": "2026-03-17",
       "items": [
         {
-          "name": "Lange",
-          "description": "Med posjert savoykål, tranebær og granateple vinaigrette, marinert bygggryn og rista pinjekjerner.",
+          "name": "Sterling kveite med squash pasta",
+          "description": "dill salsa verde, marinert byggryn og fennikelkrem.",
           "tags": [
             "fisk"
           ],
@@ -45,37 +48,46 @@
           "allergies": [
             "fisk",
             "gluten",
-            "nøtter"
+            "egg",
+            "melk",
+            "selleri"
           ]
         },
         {
-          "name": "Søtpotetsuppe",
+          "name": "Laksusuppe",
           "description": null,
           "tags": [
             "suppe",
-            "vegetar"
+            "fisk"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "fisk"
+          ]
         }
       ]
     },
     {
       "day": "Onsdag",
-      "date": "2026-03-11",
+      "date": "2026-03-18",
       "items": [
         {
-          "name": "Marinert kylling",
-          "description": "Med pita, gresk salat, tzatziki dressing, fetaost og syltet løk.",
-          "tags": [],
+          "name": "Gnocchi med marinert kylling",
+          "description": "spinat, hasselnøtter, comté ost og kremet soppsaus med steinsopp.",
+          "tags": [
+            "kylling"
+          ],
           "price": "",
           "allergies": [
             "gluten",
+            "egg",
+            "nøtter",
+            "hasselnøtter",
             "melk"
           ]
         },
         {
-          "name": "Bakt paprikasuppe",
+          "name": "Blomkålsuppe",
           "description": null,
           "tags": [
             "suppe",
@@ -88,26 +100,28 @@
     },
     {
       "day": "Torsdag",
-      "date": "2026-03-12",
+      "date": "2026-03-19",
       "items": [
         {
-          "name": "Sjøørret",
-          "description": "Sandefjordsmør med løpstikke, marinerte aspargesbønner, glaserte hasselbackpoteter med chorizo.",
+          "name": "Ørret med bønne og selleri stuing",
+          "description": "valnøtter, grønnkål, løpstikkeolje og marinerte aspargesbønner.",
           "tags": [
-            "fisk",
-            "svin"
+            "fisk"
           ],
           "price": "",
           "allergies": [
             "fisk",
-            "melk"
+            "nøtter",
+            "valnøtter",
+            "selleri"
           ]
         },
         {
-          "name": "Kylling suppe",
-          "description": "Med purre og potet.",
+          "name": "Soppsuppe",
+          "description": null,
           "tags": [
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
           "price": "",
           "allergies": []
@@ -116,18 +130,20 @@
     },
     {
       "day": "Fredag",
-      "date": "2026-03-13",
+      "date": "2026-03-20",
       "items": [
         {
-          "name": "Braistert lammebog",
-          "description": "Polenta med ramsløks ost fra Myrdal, lammesjy med eple og urterpanko.",
+          "name": "BBQ shortribs med asiatisk coleslaw",
+          "description": "smørpoppert mais, hjemmelaget BBQ sauce, chili og ostepølse og pickles.",
           "tags": [
-            "lam"
+            "kjøtt",
+            "svin"
           ],
           "price": "",
           "allergies": [
             "melk",
-            "gluten"
+            "egg",
+            "sennep"
           ]
         }
       ]
