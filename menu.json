@@ -54,15 +54,14 @@
           ]
         },
         {
-          "name": "Laksusuppe",
+          "name": "Løksuppe",
           "description": null,
           "tags": [
-            "suppe",
-            "fisk"
+            "suppe"
           ],
           "price": "",
           "allergies": [
-            "fisk"
+            "sulfitt"
           ]
         }
       ]
