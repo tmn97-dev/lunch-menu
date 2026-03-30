@@ -1,30 +1,18 @@
 {
-  "week": "2026-W13",
-  "restaurant": "DM10",
-  "hours": "11-13:00",
-  "lastUpdated": "2026-03-23",
+  "week": "2026-W14",
+  "restaurant": "Unknown",
+  "hours": "ÅPENT 11-12:30",
+  "lastUpdated": "2026-03-30",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-03-23",
+      "date": "2026-03-30",
       "items": [
         {
-          "name": "Bowl med bakt søtpotet",
-          "description": "marinerte soyabønner, avokadokrem, salat, granateple og baktebønner.",
+          "name": "Marinert kylling med bønnecassoulet",
+          "description": "Serveres med persille gremulata.",
           "tags": [
-            "vegetar"
-          ],
-          "price": "",
-          "allergies": [
-            "soya"
-          ]
-        },
-        {
-          "name": "Tomatsuppe",
-          "description": "",
-          "tags": [
-            "suppe",
-            "vegetar"
+            "kylling"
           ],
           "price": "",
           "allergies": []
@@ -33,109 +21,36 @@
     },
     {
       "day": "Tirsdag",
-      "date": "2026-03-24",
+      "date": "2026-03-31",
       "items": [
         {
-          "name": "Ørret med blåskjellrisotto",
-          "description": "marinert fennikel, estragonolje og syltet agurk.",
+          "name": "Bacalao",
+          "description": "Med lange, kapers, oliven og perlepoteter.",
           "tags": [
-            "fisk",
-            "skalldyr"
+            "fisk"
           ],
           "price": "",
           "allergies": [
-            "fisk",
-            "skalldyr",
-            "melk"
-          ]
-        },
-        {
-          "name": "Maissuppe",
-          "description": "",
-          "tags": [
-            "suppe",
-            "vegetar"
-          ],
-          "price": "",
-          "allergies": [
-            "melk"
+            "fisk"
           ]
         }
       ]
     },
     {
       "day": "Onsdag",
-      "date": "2026-03-25",
+      "date": "2026-04-01",
       "items": [
         {
-          "name": "Glasert svinenakke med kokos og soyaglaze",
-          "description": "marinert pac-choy, crispy løk og koriander.",
+          "name": "Lasagne",
+          "description": "Med focacciabrød og marinert salat.",
           "tags": [
-            "svin"
+            "pasta"
           ],
           "price": "",
           "allergies": [
-            "soya"
-          ]
-        },
-        {
-          "name": "Søtpotet og ingefærsuppe",
-          "description": "",
-          "tags": [
-            "suppe",
-            "vegetar"
-          ],
-          "price": "",
-          "allergies": [
-            "melk"
-          ]
-        }
-      ]
-    },
-    {
-      "day": "Torsdag",
-      "date": "2026-03-26",
-      "items": [
-        {
-          "name": "Skrei med ertepurè",
-          "description": "salt bakte perlepoteter, sandefjordsmør med dill og bakt spisskål.",
-          "tags": [
-            "fisk"
-          ],
-          "price": "",
-          "allergies": [
-            "fisk",
-            "melk"
-          ]
-        },
-        {
-          "name": "Pastinakksuppe",
-          "description": "",
-          "tags": [
-            "suppe",
-            "vegetar"
-          ],
-          "price": "",
-          "allergies": [
+            "gluten",
             "melk",
-            "selleri"
-          ]
-        }
-      ]
-    },
-    {
-      "day": "Fredag",
-      "date": "2026-03-27",
-      "items": [
-        {
-          "name": "Braisert lammelår med hummus",
-          "description": "persille og mynte salsa verde, bakt aubergine og paprika.",
-          "tags": [
-            "lam"
-          ],
-          "price": "",
-          "allergies": [
-            "sesam"
+            "egg"
           ]
         }
       ]
