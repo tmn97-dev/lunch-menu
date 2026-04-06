@@ -1,18 +1,36 @@
 {
-  "week": "2026-W14",
-  "restaurant": "Unknown",
-  "hours": "ÅPENT 11-12:30",
-  "lastUpdated": "2026-03-30",
+  "week": "2026-W15",
+  "restaurant": "MENY",
+  "hours": "ÅPENT 11 – 13:00",
+  "lastUpdated": "2026-04-06",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-03-30",
+      "date": "2026-04-06",
+      "items": []
+    },
+    {
+      "day": "Tirsdag",
+      "date": "2026-04-07",
       "items": [
         {
-          "name": "Marinert kylling med bønnecassoulet",
-          "description": "Serveres med persille gremulata.",
+          "name": "Kveite med kremet spinat, grønnkål, bakte rotgrønnsaker og dillolje.",
+          "description": "",
           "tags": [
-            "kylling"
+            "fisk"
+          ],
+          "price": "",
+          "allergies": [
+            "fisk",
+            "melk"
+          ]
+        },
+        {
+          "name": "Gulrot og ingefærsuppe.",
+          "description": "",
+          "tags": [
+            "suppe",
+            "vegetar"
           ],
           "price": "",
           "allergies": []
@@ -20,37 +38,79 @@
       ]
     },
     {
-      "day": "Tirsdag",
-      "date": "2026-03-31",
+      "day": "Onsdag",
+      "date": "2026-04-08",
       "items": [
         {
-          "name": "Bacalao",
-          "description": "Med lange, kapers, oliven og perlepoteter.",
+          "name": "Boeuf bourguignon med potetpurè, bakte småløk og røkt bacon.",
+          "description": "",
+          "tags": [
+            "kjøtt",
+            "svin"
+          ],
+          "price": "",
+          "allergies": [
+            "melk",
+            "gluten"
+          ]
+        },
+        {
+          "name": "Paprikasuppe.",
+          "description": "",
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
+    },
+    {
+      "day": "Torsdag",
+      "date": "2026-04-09",
+      "items": [
+        {
+          "name": "Fish tacos med marinert rødkål, syltet tomat, tzatziki og avokadokrem.",
+          "description": "",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
-            "fisk"
+            "fisk",
+            "gluten",
+            "melk"
+          ]
+        },
+        {
+          "name": "Sellerisuppe.",
+          "description": "",
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": [
+            "selleri"
           ]
         }
       ]
     },
     {
-      "day": "Onsdag",
-      "date": "2026-04-01",
+      "day": "Fredag",
+      "date": "2026-04-10",
       "items": [
         {
-          "name": "Lasagne",
-          "description": "Med focacciabrød og marinert salat.",
+          "name": "Butter chicken med ris, naan brød og yoghurt dressing.",
+          "description": "",
           "tags": [
-            "pasta"
+            "kylling"
           ],
           "price": "",
           "allergies": [
-            "gluten",
             "melk",
-            "egg"
+            "gluten"
           ]
         }
       ]
