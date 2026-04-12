@@ -1,20 +1,42 @@
 {
-  "week": "2026-W15",
-  "restaurant": "MENY",
-  "hours": "ÅPENT 11 – 13:00",
-  "lastUpdated": "2026-04-06",
+  "week": "2026-W16",
+  "lastUpdated": "2026-04-12",
+  "hours": "11-13:00",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-04-06",
-      "items": []
+      "date": "2026-04-13",
+      "items": [
+        {
+          "name": "Asparges og ramsløk risotto",
+          "description": "med ramsløksost fra Myrdal, hasselnøtter og ramsløkolje.",
+          "tags": [
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": [
+            "melk",
+            "nøtter"
+          ]
+        },
+        {
+          "name": "Søtpotetsuppe",
+          "description": "",
+          "tags": [
+            "suppe",
+            "vegetar"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
     },
     {
       "day": "Tirsdag",
-      "date": "2026-04-07",
+      "date": "2026-04-14",
       "items": [
         {
-          "name": "Kveite med kremet spinat, grønnkål, bakte rotgrønnsaker og dillolje.",
+          "name": "Lange med bakt artisjokkpurè, marinerte aspargesbønner, bakt crosnerot og ramsløks beurre blanc.",
           "description": "",
           "tags": [
             "fisk"
@@ -26,7 +48,7 @@
           ]
         },
         {
-          "name": "Gulrot og ingefærsuppe.",
+          "name": "Tomat og basilikum suppe",
           "description": "",
           "tags": [
             "suppe",
@@ -39,23 +61,23 @@
     },
     {
       "day": "Onsdag",
-      "date": "2026-04-08",
+      "date": "2026-04-15",
       "items": [
         {
-          "name": "Boeuf bourguignon med potetpurè, bakte småløk og røkt bacon.",
+          "name": "Gnocchi med kremet sopp og spinat krem, marinert kylling, Eiker ost fra Holtefjell, løpstikkeolje og pinjekjerner.",
           "description": "",
           "tags": [
-            "kjøtt",
-            "svin"
+            "fjærkre"
           ],
           "price": "",
           "allergies": [
+            "gluten",
             "melk",
-            "gluten"
+            "nøtter"
           ]
         },
         {
-          "name": "Paprikasuppe.",
+          "name": "Brokkolisuppe",
           "description": "",
           "tags": [
             "suppe",
@@ -68,10 +90,10 @@
     },
     {
       "day": "Torsdag",
-      "date": "2026-04-09",
+      "date": "2026-04-16",
       "items": [
         {
-          "name": "Fish tacos med marinert rødkål, syltet tomat, tzatziki og avokadokrem.",
+          "name": "Ørret med kokos og currysas, ris, marinert pac-choy, sukkererter og bakt paprika.",
           "description": "",
           "tags": [
             "fisk"
@@ -79,38 +101,36 @@
           "price": "",
           "allergies": [
             "fisk",
-            "gluten",
-            "melk"
+            "soya"
           ]
         },
         {
-          "name": "Sellerisuppe.",
+          "name": "Blomkålsuppe",
           "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": [
-            "selleri"
-          ]
+          "allergies": []
         }
       ]
     },
     {
       "day": "Fredag",
-      "date": "2026-04-10",
+      "date": "2026-04-17",
       "items": [
         {
-          "name": "Butter chicken med ris, naan brød og yoghurt dressing.",
+          "name": "TACO!",
           "description": "",
           "tags": [
-            "kylling"
+            "kjøtt",
+            "tex-mex"
           ],
           "price": "",
           "allergies": [
-            "melk",
-            "gluten"
+            "gluten",
+            "melk"
           ]
         }
       ]
