@@ -1,136 +1,155 @@
 {
-  "week": "2026-W16",
-  "lastUpdated": "2026-04-12",
-  "hours": "11-13:00",
+  "week": "2026-W17",
+  "restaurant": "Ukjent",
+  "hours": "ÅPENT 11-13:00",
+  "lastUpdated": "2026-04-20",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-04-13",
+      "date": "2026-04-20",
       "items": [
         {
-          "name": "Asparges og ramsløk risotto",
-          "description": "med ramsløksost fra Myrdal, hasselnøtter og ramsløkolje.",
+          "name": "Orecchiette pasta",
+          "description": "med ramsløkspesto, cime di rapa, bakte pinjekjerner, modnet geitost og soltørket tomat.",
           "tags": [
+            "pasta",
             "vegetar"
           ],
           "price": "",
           "allergies": [
+            "gluten",
             "melk",
-            "nøtter"
+            "pinjekjerner"
           ]
         },
         {
-          "name": "Søtpotetsuppe",
+          "name": "Soppsuppe",
           "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk",
+            "gluten"
+          ]
         }
       ]
     },
     {
       "day": "Tirsdag",
-      "date": "2026-04-14",
+      "date": "2026-04-21",
       "items": [
         {
-          "name": "Lange med bakt artisjokkpurè, marinerte aspargesbønner, bakt crosnerot og ramsløks beurre blanc.",
-          "description": "",
+          "name": "Laks",
+          "description": "med dillpoteter, eggesmør, bakte gulrøtter og marinert rødkål.",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
             "fisk",
+            "egg",
             "melk"
           ]
         },
         {
-          "name": "Tomat og basilikum suppe",
+          "name": "Potet og purreløkssuppe",
           "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk",
+            "gluten"
+          ]
         }
       ]
     },
     {
       "day": "Onsdag",
-      "date": "2026-04-15",
+      "date": "2026-04-22",
       "items": [
         {
-          "name": "Gnocchi med kremet sopp og spinat krem, marinert kylling, Eiker ost fra Holtefjell, løpstikkeolje og pinjekjerner.",
-          "description": "",
+          "name": "Quiche Lorraine",
+          "description": "med bakt purre, røkt bacon, bistrosalat med senneps vinaigrette og avokadokrem.",
           "tags": [
-            "fjærkre"
+            "svin",
+            "quiche"
           ],
           "price": "",
           "allergies": [
             "gluten",
+            "egg",
             "melk",
-            "nøtter"
+            "sennep"
           ]
         },
         {
-          "name": "Brokkolisuppe",
+          "name": "Løkssuppe",
           "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk",
+            "gluten"
+          ]
         }
       ]
     },
     {
       "day": "Torsdag",
-      "date": "2026-04-16",
+      "date": "2026-04-23",
       "items": [
         {
-          "name": "Ørret med kokos og currysas, ris, marinert pac-choy, sukkererter og bakt paprika.",
-          "description": "",
+          "name": "Hjemmelaget fish & chips",
+          "description": "med pommes frites, tartarsaus og ertepurè.",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
             "fisk",
-            "soya"
+            "gluten",
+            "egg",
+            "sennep",
+            "melk"
           ]
         },
         {
-          "name": "Blomkålsuppe",
+          "name": "Gulrot og ingefærsuppe",
           "description": "",
           "tags": [
             "suppe",
             "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "melk"
+          ]
         }
       ]
     },
     {
       "day": "Fredag",
-      "date": "2026-04-17",
+      "date": "2026-04-24",
       "items": [
         {
-          "name": "TACO!",
-          "description": "",
+          "name": "Ytrefilet av modnet okse",
+          "description": "med potetpurè smakstilsatt med sort hvitløk, marinerte aspargesbønner og oksejysaus med benmarg.",
           "tags": [
-            "kjøtt",
-            "tex-mex"
+            "okse"
           ],
           "price": "",
           "allergies": [
-            "gluten",
-            "melk"
+            "melk",
+            "selleri"
           ]
         }
       ]
