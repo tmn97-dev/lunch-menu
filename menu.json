@@ -1,32 +1,31 @@
 {
-  "week": "2026-W20",
-  "lastUpdated": "2026-05-11",
-  "hours": "ÅPENT 11 - 13:00",
+  "week": "2026-W21",
+  "restaurant": "",
+  "hours": "11:00 - 13:00",
+  "lastUpdated": "2026-05-18",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-05-11",
+      "date": "2026-05-18",
       "items": [
         {
-          "name": "Gnocchi arrabiata",
-          "description": "med 3 års lagret jarlsberg, oliven, marinerte sesongtomater, basilikumsolje og crispy pinjekjerner.",
+          "name": "Falafel bowl",
+          "description": "med bakt søtpotet, soyabønner, avokadokrem, bulgur, granateple og marinerte reddiker.",
           "tags": [
             "vegetar"
           ],
           "price": "",
           "allergies": [
             "gluten",
-            "egg",
-            "melk",
-            "pinjekjerner"
+            "soya"
           ]
         },
         {
-          "name": "Gulrotsuppe",
+          "name": "Gresskarsuppe.",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetar"
+            "vegetar",
+            "suppe"
           ],
           "price": "",
           "allergies": []
@@ -35,26 +34,25 @@
     },
     {
       "day": "Tirsdag",
-      "date": "2026-05-12",
+      "date": "2026-05-19",
       "items": [
         {
-          "name": "Hamachi fra Fredrikstad",
-          "description": "med dillmarinerte finnskogpoteter, brunet smør med kapers, aspargesbønner og syltet agurk.",
+          "name": "Torsk med ertepurè",
+          "description": "bacon, Reddalspoteter, granateple og mynte vinaigrette.",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
-            "fisk",
-            "melk"
+            "fisk"
           ]
         },
         {
-          "name": "Tomatsuppe",
+          "name": "Brokkoli og spinatsuppe.",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetar"
+            "vegetar",
+            "suppe"
           ],
           "price": "",
           "allergies": []
@@ -63,25 +61,25 @@
     },
     {
       "day": "Onsdag",
-      "date": "2026-05-13",
+      "date": "2026-05-20",
       "items": [
         {
-          "name": "Braisert svinenakke fra Spikkerud gård",
-          "description": "bakt burgunderkål, vårprimer og sennepsaus.",
+          "name": "Kylling med kremet polenta",
+          "description": "morkelsaus, bakte småløk og marinert sopp.",
           "tags": [
-            "svin"
+            "fjærkre"
           ],
           "price": "",
           "allergies": [
-            "sennep"
+            "melk"
           ]
         },
         {
-          "name": "Løksuppe",
+          "name": "Blomkålsuppe.",
           "description": "",
           "tags": [
-            "suppe",
-            "vegetar"
+            "vegetar",
+            "suppe"
           ],
           "price": "",
           "allergies": []
@@ -90,24 +88,46 @@
     },
     {
       "day": "Torsdag",
-      "date": "2026-05-14",
-      "items": []
-    },
-    {
-      "day": "Fredag",
-      "date": "2026-05-15",
+      "date": "2026-05-21",
       "items": [
         {
-          "name": "Lasagne",
-          "description": "med hvitløks focacciabrød og marinert sidesalat.",
+          "name": "Fiskekaker med currysus, ris",
+          "description": "syltet gulrot og marinerte erter.",
           "tags": [
-            "pasta"
+            "fisk"
           ],
           "price": "",
           "allergies": [
-            "gluten",
+            "fisk",
             "melk",
-            "egg"
+            "gluten"
+          ]
+        },
+        {
+          "name": "Søtpotetsuppe.",
+          "description": "",
+          "tags": [
+            "vegetar",
+            "suppe"
+          ],
+          "price": "",
+          "allergies": []
+        }
+      ]
+    },
+    {
+      "day": "Fredag",
+      "date": "2026-05-22",
+      "items": [
+        {
+          "name": "Braisert oksekjake tacos",
+          "description": "med pico de gallo, syltet løk, guacamole og marinert salat.",
+          "tags": [
+            "storfe"
+          ],
+          "price": "",
+          "allergies": [
+            "gluten"
           ]
         }
       ]
