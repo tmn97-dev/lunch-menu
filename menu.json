@@ -1,58 +1,36 @@
 {
-  "week": "2026-W21",
+  "week": "2026-W22",
   "restaurant": "",
-  "hours": "11:00 - 13:00",
-  "lastUpdated": "2026-05-18",
+  "hours": "11-13:00",
+  "lastUpdated": "2026-05-26",
   "days": [
     {
       "day": "Mandag",
-      "date": "2026-05-18",
-      "items": [
-        {
-          "name": "Falafel bowl",
-          "description": "med bakt søtpotet, soyabønner, avokadokrem, bulgur, granateple og marinerte reddiker.",
-          "tags": [
-            "vegetar"
-          ],
-          "price": "",
-          "allergies": [
-            "gluten",
-            "soya"
-          ]
-        },
-        {
-          "name": "Gresskarsuppe.",
-          "description": "",
-          "tags": [
-            "vegetar",
-            "suppe"
-          ],
-          "price": "",
-          "allergies": []
-        }
-      ]
+      "date": "2026-05-25",
+      "items": []
     },
     {
       "day": "Tirsdag",
-      "date": "2026-05-19",
+      "date": "2026-05-26",
       "items": [
         {
-          "name": "Torsk med ertepurè",
-          "description": "bacon, Reddalspoteter, granateple og mynte vinaigrette.",
+          "name": "Ørret med gul curry",
+          "description": "Med kokos saus, aspargesbønner, marinert brokkoli, mynte og yoghurt dressing.",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
-            "fisk"
+            "fisk",
+            "melk"
           ]
         },
         {
-          "name": "Brokkoli og spinatsuppe.",
+          "name": "Tomatsuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
           "price": "",
           "allergies": []
@@ -61,25 +39,28 @@
     },
     {
       "day": "Onsdag",
-      "date": "2026-05-20",
+      "date": "2026-05-27",
       "items": [
         {
-          "name": "Kylling med kremet polenta",
-          "description": "morkelsaus, bakte småløk og marinert sopp.",
+          "name": "Kylling med kremet pestosaus",
+          "description": "Med marinert spinat, soltørket tomat og Holtefjellost.",
           "tags": [
-            "fjærkre"
+            "kylling",
+            "kjøtt"
           ],
           "price": "",
           "allergies": [
-            "melk"
+            "melk",
+            "nøtter",
+            "ost"
           ]
         },
         {
-          "name": "Blomkålsuppe.",
+          "name": "Maissuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
           "price": "",
           "allergies": []
@@ -88,45 +69,48 @@
     },
     {
       "day": "Torsdag",
-      "date": "2026-05-21",
+      "date": "2026-05-28",
       "items": [
         {
-          "name": "Fiskekaker med currysus, ris",
-          "description": "syltet gulrot og marinerte erter.",
+          "name": "Rødspette",
+          "description": "Med ramsløks beurre blanc, perlepoteter, fennikelsalat med granateple.",
           "tags": [
             "fisk"
           ],
           "price": "",
           "allergies": [
             "fisk",
-            "melk",
-            "gluten"
+            "melk"
           ]
         },
         {
-          "name": "Søtpotetsuppe.",
+          "name": "Sellerisuppe",
           "description": "",
           "tags": [
-            "vegetar",
-            "suppe"
+            "suppe",
+            "vegetar"
           ],
           "price": "",
-          "allergies": []
+          "allergies": [
+            "selleri"
+          ]
         }
       ]
     },
     {
       "day": "Fredag",
-      "date": "2026-05-22",
+      "date": "2026-05-29",
       "items": [
         {
-          "name": "Braisert oksekjake tacos",
-          "description": "med pico de gallo, syltet løk, guacamole og marinert salat.",
+          "name": "Hjemmelaget chili con carne",
+          "description": "Med braisert okse, nachos, ris og rømmedressing.",
           "tags": [
-            "storfe"
+            "kjøtt",
+            "okse"
           ],
           "price": "",
           "allergies": [
+            "melk",
             "gluten"
           ]
         }
