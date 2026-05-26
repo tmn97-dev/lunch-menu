@@ -4,5 +4,3 @@
 .vercel
 
 node_modules
-api/upload-and-update.js
-LOCAL-ONLY.md

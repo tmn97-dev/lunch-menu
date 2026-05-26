@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel</title>
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --card: #ffffff;
+      --accent: #e85d26;
+      --accent-light: #fff0eb;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --danger: #dc2626;
+      --success: #166534;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 420px;
+    }
+    h1 { font-size: 1.25rem; margin-bottom: 1.25rem; }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    input[type="text"], input[type="password"], input[type="file"] {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-family: inherit;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    button:hover { opacity: 0.92; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    button.secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .user-pill {
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .logout-link {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: auto;
+      padding: 0;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+    .msg {
+      padding: 0.6rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .msg.error { background: #fee2e2; color: var(--danger); }
+    .msg.success { background: #dcfce7; color: var(--success); }
+    .msg.info { background: var(--accent-light); color: var(--accent); }
+    .preview {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    pre {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      max-height: 240px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div id="loading" style="text-align:center;color:var(--text-muted);">Laster…</div>
+  </div>
+
+  <script>
+    const card = document.getElementById("card");
+
+    async function init() {
+      try {
+        const r = await fetch("/api/me");
+        if (r.ok) {
+          const { username } = await r.json();
+          renderUploader(username);
+        } else {
+          renderLogin();
+        }
+      } catch {
+        renderLogin();
+      }
+    }
+
+    function renderLogin(errorMsg) {
+      card.innerHTML = `
+        <h1>Logg inn</h1>
+        ${errorMsg ? `<div class="msg error">${errorMsg}</div>` : ""}
+        <form id="login-form">
+          <label for="u">Brukernavn</label>
+          <input id="u" name="username" type="text" autocomplete="username" required>
+          <label for="p">Passord</label>
+          <input id="p" name="password" type="password" autocomplete="current-password" required>
+          <button type="submit" id="submit">Logg inn</button>
+        </form>
+      `;
+      document.getElementById("login-form").addEventListener("submit", onLogin);
+    }
+
+    async function onLogin(e) {
+      e.preventDefault();
+      const btn = document.getElementById("submit");
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner"></span>Logger inn…`;
+      const username = document.getElementById("u").value;
+      const password = document.getElementById("p").value;
+      try {
+        const r = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        if (r.ok) {
+          const { username: u } = await r.json();
+          renderUploader(u);
+        } else {
+          const { error } = await r.json().catch(() => ({}));
+          renderLogin(error || "Innlogging feilet");
+        }
+      } catch {
+        renderLogin("Nettverksfeil");
+      }
+    }
+
+    function renderUploader(username) {
+      card.innerHTML = `
+        <div class="row">
+          <h1 style="margin:0">Oppdater meny</h1>
+          <span class="user-pill">${username}</span>
+        </div>
+        <form id="upload-form">
+          <label for="file">Velg et bilde av ukens meny</label>
+          <input id="file" type="file" accept="image/*" required>
+          <img id="preview" class="preview" style="display:none" alt="">
+          <button type="submit" id="submit">Last opp og oppdater</button>
+        </form>
+        <div id="result"></div>
+        <button class="logout-link" id="logout" style="margin-top:1rem">Logg ut</button>
+      `;
+      document.getElementById("file").addEventListener("change", onFileChange);
+      document.getElementById("upload-form").addEventListener("submit", onUpload);
+      document.getElementById("logout").addEventListener("click", onLogout);
+    }
+
+    function onFileChange(e) {
+      const file = e.target.files[0];
+      const preview = document.getElementById("preview");
+      if (!file) {
+        preview.style.display = "none";
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = ev => {
+        preview.src = ev.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function onUpload(e) {
+      e.preventDefault();
+      const file = document.getElementById("file").files[0];
+      if (!file) return;
+      const btn = document.getElementById("submit");
+      const result = document.getElementById("result");
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner"></span>Tolker bilde…`;
+      result.innerHTML = "";
+
+      try {
+        const dataUrl = await readAsDataURL(file);
+        const r = await fetch("/api/upload-and-update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: dataUrl }),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (r.ok) {
+          result.innerHTML = `
+            <div class="msg success">Meny oppdatert ✓ (uke ${data.menu?.week || "?"})</div>
+            <pre>${escapeHtml(JSON.stringify(data.menu, null, 2))}</pre>
+          `;
+        } else if (r.status === 401) {
+          renderLogin("Sesjonen utløp. Logg inn igjen.");
+          return;
+        } else {
+          result.innerHTML = `<div class="msg error">${data.error || "Opplasting feilet"}${data.detail ? ": " + escapeHtml(data.detail) : ""}</div>`;
+        }
+      } catch (err) {
+        result.innerHTML = `<div class="msg error">${err.message}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Last opp og oppdater";
+      }
+    }
+
+    async function onLogout() {
+      await fetch("/api/logout", { method: "POST" });
+      renderLogin();
+    }
+
+    function readAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    init();
+  </script>
+</body>
+</html>

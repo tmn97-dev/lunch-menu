@@ -232,12 +232,12 @@
     async function loadMenu() {
       const content = document.getElementById("content");
       try {
-        const resp = await fetch("menu.json?" + Date.now());
-        if (!resp.ok) throw new Error("Could not load menu.json");
+        const resp = await fetch("/api/menu?" + Date.now());
+        if (!resp.ok) throw new Error("Could not load menu");
         const data = await resp.json();
         render(data);
       } catch (err) {
-        content.innerHTML = `<div class="error-msg">Kunne ikke laste menyen. Sjekk at <code>menu.json</code> finnes.</div>`;
+        content.innerHTML = `<div class="error-msg">Kunne ikke laste menyen.</div>`;
       }
     }
 

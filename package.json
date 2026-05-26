@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "Weekly lunch menu with upload-to-update",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "seed:user": "node --env-file=.env.local scripts/create-user.js"
+  },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.9.6"
+  },
+  "devDependencies": {
     "vercel": "^50.22.1"
   }
 }
