@@ -31,32 +31,41 @@ export default async function handler(req, res) {
 
   const user = await verifySession(req);
   if (!user) {
+    console.log("[upload] Auth failed: no valid session");
     res.status(401).json({ error: "Not authenticated" });
     return;
   }
+  console.log("[upload] Authenticated user:", user.id);
 
   const geminiKey = process.env.GEMINI_API_KEY;
   if (!geminiKey) {
+    console.error("[upload] GEMINI_API_KEY missing");
     res.status(500).json({ error: "Server misconfigured: GEMINI_API_KEY required" });
     return;
   }
 
   const dataUrl = req.body?.image;
   if (!dataUrl || typeof dataUrl !== "string" || !dataUrl.startsWith("data:image")) {
+    console.log("[upload] Invalid image data:", typeof dataUrl, dataUrl?.slice?.(0, 50));
     res.status(400).json({ error: "Body must include image (data URL)" });
     return;
   }
+
+  const imageSize = Math.round((dataUrl.length * 3) / 4 / 1024);
+  console.log("[upload] Image received, ~%d KB", imageSize);
 
   let menuJson;
   try {
     const match = dataUrl.match(/^data:(image\/[a-z+]+);base64,(.+)$/i);
     const mimeType = match ? match[1] : "image/jpeg";
     const base64Data = match ? match[2] : dataUrl.replace(/^data:image\/\w+;base64,/, "");
+    console.log("[upload] MIME: %s, base64 length: %d", mimeType, base64Data.length);
 
     const userPrompt =
       "Extract the weekly lunch menu from this image. Return only valid JSON matching the schema (week, restaurant, hours, lastUpdated, days with day/date/items). Use Norwegian. Today's date for lastUpdated: " +
       new Date().toISOString().slice(0, 10);
 
+    console.log("[upload] Calling Gemini...");
     const geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(geminiKey)}`,
       {
@@ -79,6 +88,7 @@ export default async function handler(req, res) {
 
     if (!geminiRes.ok) {
       const errText = await geminiRes.text();
+      console.error("[upload] Gemini HTTP %d: %s", geminiRes.status, errText.slice(0, 500));
       res.status(502).json({ error: "AI request failed", detail: errText.slice(0, 300) });
       return;
     }
@@ -86,14 +96,17 @@ export default async function handler(req, res) {
     const geminiData = await geminiRes.json();
     const raw = geminiData.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     if (!raw) {
-      const errDetail = geminiData.error?.message || JSON.stringify(geminiData).slice(0, 200);
-      res.status(502).json({ error: "Empty AI response", detail: errDetail });
+      const errDetail = geminiData.error?.message || JSON.stringify(geminiData).slice(0, 500);
+      console.error("[upload] Empty AI response:", errDetail);
+      res.status(502).json({ error: "Empty AI response", detail: errDetail.slice(0, 300) });
       return;
     }
 
+    console.log("[upload] Gemini responded, raw length: %d", raw.length);
     const cleaned = raw.replace(/^```json\s*/i, "").replace(/\s*```\s*$/, "").trim();
     menuJson = JSON.parse(cleaned);
   } catch (e) {
+    console.error("[upload] Error:", e.message, e.stack);
     res.status(502).json({ error: "AI parse failed", detail: e.message });
     return;
   }
@@ -102,10 +115,17 @@ export default async function handler(req, res) {
     menuJson.lastUpdated = new Date().toISOString().slice(0, 10);
   }
 
-  await db().execute({
-    sql: "INSERT INTO menus (data, uploaded_by) VALUES (?, ?)",
-    args: [JSON.stringify(menuJson), user.id],
-  });
+  try {
+    await db().execute({
+      sql: "INSERT INTO menus (data, uploaded_by) VALUES (?, ?)",
+      args: [JSON.stringify(menuJson), user.id],
+    });
+    console.log("[upload] Menu saved to DB");
+  } catch (e) {
+    console.error("[upload] DB error:", e.message);
+    res.status(500).json({ error: "Database error", detail: e.message });
+    return;
+  }
 
   res.status(200).json({ success: true, menu: menuJson });
 }
